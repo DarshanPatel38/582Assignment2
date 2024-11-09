@@ -1,0 +1,83 @@
+Harley Acheson
+The mouse cursor flickering is almost certainly a separate Mac-specific issue. The widened area edge hit area was done afterward and should help a bit. For the small corner zones I think we should consider enlarging the top-left one (only) now that all four work identically. Note you can also now avoid using them at all by adding a shortcut to the operator. I had intended on buying a Mac for this Conference trip, but it didn’t work out yet.
+Nurb2Kea
+Harley Acheson
+The mouse cursor flickering is almost certainly a separate Mac-specific issue. The widened area edge hit area was done afterward and should help a bit. For the small corner zones I think we should consider enlarging the top-left one (only) now that all four work identically. Note you can also now avoid using them at all by adding a shortcut to the operator. I had intended on buying a Mac for this Conference trip, but it didn’t work out yet.
+Good it didn't work out yet. BECAUSE the new Mac mini M4 now, is a beast for the small buck, if you don't want a MacBook.
+cmbasnett
+What is the way to force an update of the outliner? I want to make it so that the outliner is immediately updated when an edit bone's parent is changed. I tried adding WM_main_add_notifier(NC_SPACE | ND_SPACE_OUTLINER, id); to the update function, but no dice.
+Jonas Holzman
+cmbasnett
+What is the way to force an update of the outliner? I want to make it so that the outliner is immediately updated when an edit bone's parent is changed. I tried adding WM_main_add_notifier(NC_SPACE | ND_SPACE_OUTLINER, id); to the update function, but no dice.
+I made a fix PR some time ago that used an outliner redraw notifier, depending on context you might be able to reuse this: https://projects.blender.org/blender/blender/pulls/126386/files
+Fix #126246: Missing Outliner redraw notifier when making datablock single user - Blender Projects
+Without a proper redraw, the outliner (in `Blender File` mode) would only *partially* update on mouse hover, refreshing the user-count of the old datablock without listing the newly added datablock.
+1 reply
+cmbasnett
+https://projects.blender.org/blender/blender/pulls/129933 That worked, thanks; needed to pass the nullptr as the last argument in order for it to work.
+Wednesday
+Sergey
+Thomas Dinges
+: Hey! So, I have a dice set. We roll 20, if it's a crit we move to RC?
+1 reply
+Alaska
+Bad news for you. My D20 says go to release candidate.
+Raimund58
+Sergey
+: What happens if you roll a 1?
+Sergey
+we give up on 4.3, skip it, and focus on 4.4?
+Looking at the state of the milestone, there is so much red: https://projects.blender.org/blender/blender/milestone/21
+blender - Blender Projects
+The official Blender project repository.
+Thomas Dinges
+Good day! 
+There are 23 open issues on the 4.3 milestone, way too many to call for an Release Candidate. I therefore propose to postpone the 4.3 release by one week. That means:
+
+RC on November 13th
+Release on November 19th
+As a result, I expect everyone (who has remaining 4.3 issues open) to solely focus on these. I do not want to see 4.4 development while issues are not addressed.
+
+If anyone has objections or remarks about this please let me know today.
+Additionally, everyone helping out with bug fixes is very welcome. I think especially the Grease Pencil team could use some help
+SensArice
+The reason there hasn't been any administrator review of my submissions these days is that everyone is busy with the 4.3？, the list of issues regarding 4.3...
+Harley Acheson
+Of the things on our list I’m a little concerned about #129414. On X11 (only) drag and drop and area maintenance routines won’t work correctly if you have multiple overlapping windows when the window on top is older than the one below. For all other platforms we have OS-specific code to give us the top-most window at a location, but we don’t have that for X11 so we get the default behaviour for overlapping windows, that newer ones are more likely to be on top. It seems unlikely that we will find someone to add this X11 ghost code quickly since we’ve managed without it for so long.
+Sergey
+SensArice
+: Which submissions you expects administrators to review?
+SensArice
+I see that there are still 20 bugs to fix in 4.3, but none of them are in the modules I'm familiar with. I'm particularly interested in #129058, but I can't really help with it.
+My PR is still undergoing modifications, so I can definitely wait until next week to notify the The code is under review. I also support prioritizing bug fixes.
+At least the code for the geometry nodes part needs to be fixed first..
+Sergey
+Sergey
+I suppose you mean something else by admin than someone from the bf-admin team?
+The report you've mentioned has been added to the 4.3 milestone. I assume Julian wants it to be addressed
+Sergey
+Jacques Lucke
+ 
+Hans Goudey
+ Is this something you'd be excited to review? https://projects.blender.org/blender/blender/pulls/128669
+BLI: Optimize quaternion rotation routine - Blender Projects
+I worked with quaternions for quite some years now and figured out some neat tricks. I now run through the internet to improve open source projects with these findings. This PR makes an improvement of the rotation of a vector using a quaternion. The derivation can be found on https://raw.org/pro...
+In a way, when people mention something is optimized would be good to have a measure
+Hans Goudey
+Yeah sure, will do
+Hans Goudey
+SensArice
+The reason there hasn't been any administrator review of my submissions these days is that everyone is busy with the 4.3？, the list of issues regarding 4.3...
+Hey, I assume you're talking about the PR you mentioned yesterday? LIke I said, I think the description needs to be a bit more complete before it is ready for review
+4 replies
+Wu Yiming
+🤔 maybe I could try formatting it so the purpose of the PR is more understandable
+Hans Goudey
+Okay yeah that's much more detail than I saw yesterday, nice
+I'd just recommend a bit of patience now haha
+moisnull joined the room
+Sergey
+Jonas Holzman
+: Hey! Do you have some quick moment to talk about https://projects.blender.org/blender/blender/issues/129424 ?
+Image Editor: Copy / Paste upside down on macOS - Blender Projects
+**System Information** Operating system: macOS-13.7-arm64-arm-64bit 64 Bits Graphics card: Metal API Apple M1 Max 1.2 **Blender Version** Broken: version: 4.4.0 Alpha, branch: main, commit date: 2024-10-25 18:19, hash: `af4974dfaa16` Broken: 4.3 Worked: 4.2 as it did not have this feature **Sho...
